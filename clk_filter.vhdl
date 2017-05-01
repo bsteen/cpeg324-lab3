@@ -32,8 +32,7 @@ architecture structural of clk_filter is
      );
   end component dl;
 
-signal Q3, Q4, D3, D4 : std_logic;
-signal Q0, Q1, Q2 : std_logic := '1';
+signal Q0, Q1, Q2,Q3, Q4,D3, D4 : std_logic;
 
 begin
   dff0 : dff port map(clk_in, Q3, '1', Q0);
@@ -46,8 +45,8 @@ begin
   D4 <= trigger and Q2 and Q1 and Q0;
 
   with Q2 select clk_out <=
-    clk_in when '1',
-    '0' when others;
+    '0' when '0',
+    clk_in when others;
 end architecture structural;
 
 
