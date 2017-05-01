@@ -94,19 +94,19 @@ begin
         int_val := to_integer(signed(RA_data));
         if(int_val >= 0) then
           if(int_val < 10) then
-            report "   " & integer'image(int_val);
+            report "   " & integer'image(int_val) severity note;
           elsif(int_val < 100) then
-            report "  " & integer'image(int_val);
+            report "  " & integer'image(int_val) severity note;
           else
-            report " " & integer'image(int_val);
+            report " " & integer'image(int_val) severity note;
           end if;
         else --Display value is negative
           if(int_val > -10) then
-            report "  " & integer'image(int_val);
+            report "  " & integer'image(int_val) severity note;
           elsif(int_val > -100) then
-            report " " & integer'image(int_val);
+            report " " & integer'image(int_val) severity note;
           else
-            report integer'image(int_val);
+            report integer'image(int_val) severity note;
           end if;
         end if;
       end if;

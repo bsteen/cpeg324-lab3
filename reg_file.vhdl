@@ -20,7 +20,7 @@ end entity reg_file;
 
 architecture behavioral of reg_file is
 
-  signal R0,R1,R2,R3 : std_logic_vector(7 downto 0) := "00000000";
+  signal R0, R1, R2, R3 : std_logic_vector(7 downto 0) := "00000000";
 
   begin
     process (CLK) is

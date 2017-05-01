@@ -21,13 +21,13 @@ calculator:
 ###################################################
 
 ###################################################
-test-calculator: calculator
+run-calculator: calculator
 #	Run the test bench
 	$(GHDL) $(RUN) calculator_tb
 ###################################################
 
 ###################################################
-test-dump-calculator_tb: make-calculator
+dump-calculator_tb: calculator
 	$(GHDL) $(RUN) calculator_tb --vcd=calculator_tb.vcd
 #Use a tool like GTK wave to view the vcd file and see the waveforms.
 ###################################################

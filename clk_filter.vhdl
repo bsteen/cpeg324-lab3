@@ -32,12 +32,13 @@ architecture structural of clk_filter is
      );
   end component dl;
 
-signal Q0, Q1, Q2, Q3, Q4, D3, D4 : std_logic;
+signal Q3, Q4, D3, D4 : std_logic;
+signal Q0, Q1, Q2 : std_logic := '1';
 
 begin
   dff0 : dff port map(clk_in, Q3, '1', Q0);
   dff1 : dff port map(clk_in, Q4, Q0, Q1);
-  dff2 : dff port map(clk_in, open, Q1, Q2);
+  dff2 : dff port map(clk_in, '0', Q1, Q2);
   dl0 : dl port map(clk_in, D3, Q3);
   dl1 : dl port map(clk_in, D4, Q4);
 
@@ -50,9 +51,8 @@ begin
 end architecture structural;
 
 
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
 --D Flip-Flop
 entity dff is
    port(
@@ -67,7 +67,7 @@ begin
    process (clk) is
    begin
       if clk'event and clk = '1' then
-         if (R='1') then
+         if (R = '1') then
             Q <= '0';
          else
             Q <= D;
@@ -76,8 +76,8 @@ begin
    end process;
 end architecture behavioral;
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
 --D latch
 entity dl is
    port(
