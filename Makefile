@@ -1,7 +1,7 @@
 # Benjamin Steenkamer and Abraham McIlvaine
 # CPEG 324-010
-# Lab 2: VHDL Componetns - Makefile
-# 4/5/17
+# Lab 3: Single Cycle Calculator - Makefile
+# 5/3/17
 
 GHDL = ghdl-0.33-x86_64-linux/bin/ghdl
 COMP = -a --ieee=standard
@@ -15,7 +15,7 @@ calculator:
 	$(GHDL) $(COMP) addsub_8bit.vhdl
 	$(GHDL) $(COMP) calculator.vhdl
 #	Generate the executable for the test bench
-	# $(GHDL) $(EXE) mux4to1_tb
+#	$(GHDL) $(EXE) mux4to1_tb
 
 test-mux4to1: make-mux4to1
 #	Run the test benchRun the test bench
