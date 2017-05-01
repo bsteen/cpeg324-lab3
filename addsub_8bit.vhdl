@@ -1,7 +1,7 @@
 -- Benjamin Steenkamer and Abraham McIlvaine
 -- CPEG 324-010
--- Lab 2: VHDL Components - addsub_4bit.vhdl
--- 4/5/17
+-- Lab 3: Single Cycle Calculator in VHDL- addsub_8bit.vhdl
+-- 5/3/17
 
 --8 Bit Adder/Subtractor--------------------------------
 library ieee;
@@ -97,5 +97,4 @@ begin                    --(a(in), b(in), sum(out), c_out(out))
     h2: half_adder port map(s1, c_in, sum, s2);
     c_out <= s2 or s3;
 end architecture structural;
-
 --------------------------------------------------------
