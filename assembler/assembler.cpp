@@ -1,5 +1,3 @@
-
-
 /*
   Syntax:
   Load-immediate: li $RD,imm

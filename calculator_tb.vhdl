@@ -24,7 +24,7 @@ signal I : std_logic_vector(7 downto 0);
 signal clk : std_logic;
 
 begin
-    calculator0 : calculator port map(I, clk);
+    calculator_0 : calculator port map(I, clk);
 
     process
       file instruction_file : text is in "instructions.txt"; --Instructions in text(ASCII) file.

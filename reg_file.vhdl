@@ -26,6 +26,8 @@ architecture behavioral of reg_file is
   signal R3 : std_logic_vector(7 downto 0) := "00000000";
 
   begin
+
+    --Reads are combinational.
     with RA select RA_data <=
       R0 when "00",
       R1 when "01",
@@ -37,6 +39,7 @@ architecture behavioral of reg_file is
       R2 when "10",
       R3 when others;
 
+    --Writes only happen on the rising edge of the clock.
     process (CLK) is
       begin
         if (CLK'event and CLK='1') then
