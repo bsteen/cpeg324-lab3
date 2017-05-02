@@ -20,25 +20,26 @@ end entity reg_file;
 
 architecture behavioral of reg_file is
 
-  signal R0, R1, R2, R3 : std_logic_vector(7 downto 0) := "00000000";
+  signal R0 : std_logic_vector(7 downto 0) := "00000000";
+  signal R1 : std_logic_vector(7 downto 0) := "00000000";
+  signal R2 : std_logic_vector(7 downto 0) := "00000000";
+  signal R3 : std_logic_vector(7 downto 0) := "00000000";
 
   begin
+    with RA select RA_data <=
+      R0 when "00",
+      R1 when "01",
+      R2 when "10",
+      R3 when others;
+    with RB select RB_data <=
+      R0 when "00",
+      R1 when "01",
+      R2 when "10",
+      R3 when others;
+
     process (CLK) is
       begin
         if (CLK'event and CLK='1') then
-          case RA is
-            when "00"=> RA_data<=R0;
-            when "01"=> RA_data<=R1;
-            when "10"=> RA_data<=R2;
-            when others => RA_data<=R3;
-          end case;
-          case RB is
-            when "00"=> RB_data<=R0;
-            when "01"=> RB_data<=R1;
-            when "10"=> RB_data<=R2;
-            when others => RB_data<=R3;
-          end case;
-
           if (WE = '1') then
             if (RW = "00") then
               R0 <= WD;

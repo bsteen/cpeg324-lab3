@@ -1,26 +1,26 @@
 v 4
-file . "calculator_tb.vhdl" "994131166118e9e7ae9cedbf787796baebd0df88" "20170501231415.113":
-  entity calculator_tb at 6( 135) + 0 on 131;
-  architecture structural of calculator_tb at 14( 284) + 0 on 132;
-file . "addsub_8bit.vhdl" "5b29388b9b7321325487eac6eb3b2c112cc8e330" "20170501231414.727":
-  entity addsub_8bit at 7( 189) + 0 on 121;
-  architecture structural of addsub_8bit at 15( 458) + 0 on 122;
-  entity adder_8bit at 37( 1415) + 0 on 123;
-  architecture structural of adder_8bit at 44( 1614) + 0 on 124;
-  entity half_adder at 66( 2665) + 0 on 125;
-  architecture behavioral of half_adder at 73( 2820) + 0 on 126;
-  entity full_adder at 81( 3053) + 0 on 127;
-  architecture structural of full_adder at 88( 3214) + 0 on 128;
-file . "reg_file.vhdl" "de9c92640c19a8cdc3275e7b602312b9e0e33081" "20170501231414.489":
-  entity reg_file at 6( 130) + 0 on 113;
-  architecture behavioral of reg_file at 21( 537) + 0 on 114;
-file . "clk_filter.vhdl" "b5943566d0075ea697940253ca3c85835ebc96ff" "20170501231414.619":
-  entity clk_filter at 6( 132) + 0 on 115;
-  architecture structural of clk_filter at 18( 337) + 0 on 116;
-  entity dff at 53( 1081) + 0 on 117;
-  architecture behavioral of dff at 64( 1281) + 0 on 118;
-  entity dl at 78( 1548) + 0 on 119;
-  architecture behavioral of dl at 88( 1716) + 0 on 120;
-file . "calculator.vhdl" "31d74146f90dff0dba36afc6ab9d33edb96a8be6" "20170501231414.886":
-  entity calculator at 6( 132) + 0 on 129;
-  architecture structural of calculator at 18( 345) + 0 on 130;
+file . "calculator_tb.vhdl" "994131166118e9e7ae9cedbf787796baebd0df88" "20170502000006.207":
+  entity calculator_tb at 6( 135) + 0 on 483;
+  architecture structural of calculator_tb at 14( 284) + 0 on 484;
+file . "addsub_8bit.vhdl" "5b29388b9b7321325487eac6eb3b2c112cc8e330" "20170502000005.789":
+  entity addsub_8bit at 7( 189) + 0 on 473;
+  architecture structural of addsub_8bit at 15( 458) + 0 on 474;
+  entity adder_8bit at 37( 1415) + 0 on 475;
+  architecture structural of adder_8bit at 44( 1614) + 0 on 476;
+  entity half_adder at 66( 2665) + 0 on 477;
+  architecture behavioral of half_adder at 73( 2820) + 0 on 478;
+  entity full_adder at 81( 3053) + 0 on 479;
+  architecture structural of full_adder at 88( 3214) + 0 on 480;
+file . "reg_file.vhdl" "6917ae40335eba1cc1ef86cad743054ddc6a3878" "20170502000005.498":
+  entity reg_file at 6( 130) + 0 on 465;
+  architecture behavioral of reg_file at 21( 537) + 0 on 466;
+file . "clk_filter.vhdl" "b5943566d0075ea697940253ca3c85835ebc96ff" "20170502000005.658":
+  entity clk_filter at 6( 132) + 0 on 467;
+  architecture structural of clk_filter at 18( 337) + 0 on 468;
+  entity dff at 53( 1081) + 0 on 469;
+  architecture behavioral of dff at 64( 1281) + 0 on 470;
+  entity dl at 78( 1548) + 0 on 471;
+  architecture behavioral of dl at 88( 1716) + 0 on 472;
+file . "calculator.vhdl" "2035f4d73938ac22b5e648f89a60f53d7925645d" "20170502000005.978":
+  entity calculator at 6( 132) + 0 on 481;
+  architecture structural of calculator at 18( 345) + 0 on 482;

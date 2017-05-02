@@ -48,7 +48,6 @@ architecture structural of calculator is
 signal filtered_clk,WE,display,WD_sel,trigger,cmp_out : std_logic;
 signal RA,RB,RW : std_logic_vector(1 downto 0);
 signal WD,RA_data,RB_data,sign_ext_imm,ALU_out: std_logic_vector(7 downto 0);
-
 begin
   reg_file_0 : reg_file port map(RA,RB,RW,WD,filtered_clk,WE,RA_data,RB_data);
   ALU: addsub_8bit port map(RA_data,RB_data,I(7),ALU_out);
