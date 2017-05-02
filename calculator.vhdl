@@ -2,7 +2,6 @@
 -- CPEG 324-010
 -- Lab 3: Single Cycle Calculator in VHDL - calculator.vhdl
 -- 5/3/17
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
