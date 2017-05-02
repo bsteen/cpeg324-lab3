@@ -9,6 +9,10 @@ EXE = -e --ieee=standard
 RUN = -r
 
 ###################################################
+default: run-calculator
+###################################################
+
+###################################################
 calculator:
 #	Compile VHDL files
 	$(GHDL) $(COMP) reg_file.vhdl

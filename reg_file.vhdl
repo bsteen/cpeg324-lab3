@@ -5,6 +5,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+--Contains 4, 8 bit registers that are initialized to 0.
 entity reg_file is
   port(
     RA : in std_logic_vector(1 downto 0);
@@ -19,14 +20,12 @@ entity reg_file is
 end entity reg_file;
 
 architecture behavioral of reg_file is
-
   signal R0 : std_logic_vector(7 downto 0) := "00000000";
   signal R1 : std_logic_vector(7 downto 0) := "00000000";
   signal R2 : std_logic_vector(7 downto 0) := "00000000";
   signal R3 : std_logic_vector(7 downto 0) := "00000000";
 
   begin
-
     --Reads are combinational.
     with RA select RA_data <=
       R0 when "00",

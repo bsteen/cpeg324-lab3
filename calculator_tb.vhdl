@@ -7,7 +7,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use std.textio.all;
 
---The test bench has no interface
+--The test bench has no interface.
 entity calculator_tb is
 end entity calculator_tb;
 
@@ -31,13 +31,13 @@ begin
       variable instruction_line : line;
       variable intruction_vector : bit_vector(7 downto 0);
     begin
-      wait for 999 ps;
+      wait for 999 ps; --Used to offset a wait delay in the calculator so time stamps in GTKwave look nicer.
       while (not(endfile(instruction_file))) loop --Loop to the end of the text file.
         clk <= '0';
 
         readline(instruction_file, instruction_line); --Read in instruction line from file
         read(instruction_line, intruction_vector); --Pass instruction to bit vector form
-        I <= to_stdlogicvector(intruction_vector); --Convert bit vector to std_logic_vector and pass instruction to the calculator input.s
+        I <= to_stdlogicvector(intruction_vector); --Convert bit vector to std_logic_vector and pass instruction to the calculator input.
 
         --Create a rising edge for the clock.
         wait for 1 ns;

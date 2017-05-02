@@ -61,22 +61,6 @@ begin                     --(a(in), b(in), c_in(in), sum(out), c_out(out))
 end architecture structural;
 --------------------------------------------------------
 
-
---Half Adder--------------------------------------------
-library ieee;
-use ieee.std_logic_1164.all;
-entity half_adder is
-    port(a, b : in std_logic;
-        sum, carry : out std_logic);
-end entity half_adder;
-
-architecture behavioral of half_adder is
-begin
-    sum <= a xor b;
-    carry <= a and b;
-end architecture behavioral;
---------------------------------------------------------
-
 --Full Adder--------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
@@ -97,4 +81,19 @@ begin                    --(a(in), b(in), sum(out), c_out(out))
     h2: half_adder port map(s1, c_in, sum, s2);
     c_out <= s2 or s3;
 end architecture structural;
+--------------------------------------------------------
+
+--Half Adder--------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+entity half_adder is
+    port(a, b : in std_logic;
+        sum, carry : out std_logic);
+end entity half_adder;
+
+architecture behavioral of half_adder is
+begin
+    sum <= a xor b;
+    carry <= a and b;
+end architecture behavioral;
 --------------------------------------------------------

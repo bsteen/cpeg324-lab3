@@ -6,6 +6,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+--Used to skip instructions.
 entity clk_filter is
   port(
     clk_in : in std_logic;
@@ -16,7 +17,6 @@ entity clk_filter is
 end entity clk_filter;
 
 architecture structural of clk_filter is
-
   component dff is
      port(
       clk : in std_logic;
@@ -33,9 +33,9 @@ architecture structural of clk_filter is
      );
   end component dl;
 
-signal Q0 : std_logic:='1';
-signal Q1, Q2, Q4,D3, D4 : std_logic :='1';
-signal Q3 : std_logic :='1';
+signal Q0 : std_logic := '1';
+signal Q1, Q2, Q4, D3, D4 : std_logic := '1';
+signal Q3 : std_logic := '1';
 begin
   dff0 : dff port map(clk_in, Q3, '1', Q0);
   dff1 : dff port map(clk_in, Q4, Q0, Q1);
@@ -45,8 +45,7 @@ begin
 
   D3 <= S and D4;
   D4 <= trigger and Q2 and Q1 and Q0;
-  clk_out<= Q2 and clk_in after 1 ps;
-
+  clk_out <= Q2 and clk_in after 1 ps;
 end architecture structural;
 
 library ieee;

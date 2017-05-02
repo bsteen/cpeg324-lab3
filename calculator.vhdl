@@ -23,6 +23,7 @@ architecture structural of calculator is
           sum : out std_logic_vector(7 downto 0)
         );
   end component addsub_8bit;
+
   component reg_file is
     port(
       RA : in std_logic_vector(1 downto 0);
@@ -45,22 +46,28 @@ architecture structural of calculator is
     );
   end component clk_filter;
 
-signal filtered_clk,WE,display,WD_sel,trigger,cmp_out : std_logic;
-signal RA,RB,RW : std_logic_vector(1 downto 0);
-signal WD,RA_data,RB_data,sign_ext_imm,ALU_out: std_logic_vector(7 downto 0);
-begin
-  reg_file_0 : reg_file port map(RA,RB,RW,WD,filtered_clk,WE,RA_data,RB_data);
-  ALU: addsub_8bit port map(RA_data,RB_data,I(7),ALU_out);
-  clk_filter_0 : clk_filter port map(clk,filtered_clk,I(4),trigger);
+signal filtered_clk, WE, display, WD_sel, trigger, cmp_out : std_logic;
+signal RA, RB, RW : std_logic_vector(1 downto 0);
+signal WD, RA_data, RB_data, sign_ext_imm, ALU_out: std_logic_vector(7 downto 0);
 
+begin
+  reg_file_0 : reg_file port map(RA, RB, RW, WD, filtered_clk, WE, RA_data, RB_data);
+  ALU: addsub_8bit port map(RA_data, RB_data, I(7), ALU_out);
+  clk_filter_0 : clk_filter port map(clk, filtered_clk, I(4), trigger);
+
+  --Assign and/or create control singals route instructions.
+  --See datapath schematic.
   RB <= I(1 downto 0);
   RW <= I(5 downto 4);
+
+  --Print regesiter control signal.
   display <= not (I(7) or I(6) or I(5));
 
   with display select RA <=
     I(3 downto 2) when '0',
     I(4 downto 3) when others;
 
+  --Sign extedend the immediate value.
   sign_ext_imm(3 downto 0) <= I(3 downto 0);
   with I(3) select sign_ext_imm(7 downto 4) <=
     "1111" when '1',
@@ -72,10 +79,13 @@ begin
     sign_ext_imm when '0',
     ALU_out when others;
 
-  WE <= I(7) or I(6);--Is WD written to RW?
+  --Is WD written to RW?
+  WE <= I(7) or I(6);
 
+  --Used to trigger the skip instruction logic.
   trigger <= (not I(7)) and (not I(6)) and I(5) and cmp_out;
 
+  --Compare the value of the two registers; cmp_out is 1 if they are equal.
   cmp_out <= (RA_data(7) xnor RB_data(7)) and
             (RA_data(6) xnor RB_data(6)) and
             (RA_data(5) xnor RB_data(5)) and
@@ -89,9 +99,10 @@ begin
   process(filtered_clk,display) is
     variable int_val : integer;
     begin
-      --report std_logic'image(filtered_clk);
       if((filtered_clk'event and filtered_clk = '1') and (display = '1')) then
         int_val := to_integer(signed(RA_data));
+
+        --Make the ouput right aligned.
         if(int_val >= 0) then
           if(int_val < 10) then
             report "   " & integer'image(int_val) severity note;
@@ -111,8 +122,4 @@ begin
         end if;
       end if;
   end process;
-
-
-
-
 end architecture structural;

@@ -1,4 +1,3 @@
-
 Syntax:
   Load-immediate: li $RD,imm
   Add:            add $RD,$RS,$RT
