@@ -31,6 +31,7 @@ begin
       variable instruction_line : line;
       variable intruction_vector : bit_vector(7 downto 0);
     begin
+      wait for 999 ps;
       while (not(endfile(instruction_file))) loop --Loop to the end of the text file.
         clk <= '0';
 

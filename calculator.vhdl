@@ -89,7 +89,8 @@ begin
   process(filtered_clk,display) is
     variable int_val : integer;
     begin
-      if(filtered_clk'event and filtered_clk = '1' and display = '1') then
+      --report std_logic'image(filtered_clk);
+      if((filtered_clk'event and filtered_clk = '1') and (display = '1')) then
         int_val := to_integer(signed(RA_data));
         if(int_val >= 0) then
           if(int_val < 10) then

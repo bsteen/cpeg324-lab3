@@ -61,7 +61,8 @@ int main(int argc, char *argv[]){
 
 
   FILE.close();
-  write_file(filePath);
+  if(out_buffer.size() == --linecnt)//no errors
+    write_file(filePath);
 
 }
 
@@ -142,7 +143,7 @@ void print(std::string& buf){
   int reg = getReg(buf.substr(7,buf.size()-7));
   if(reg==ERROR){return;}
   std::string out_instr="";
-  out_instr.append("110");
+  out_instr.append("000");
   appendReg(reg,out_instr);
   out_instr.append("000");
   //std::cout<<out_instr<<std::endl;

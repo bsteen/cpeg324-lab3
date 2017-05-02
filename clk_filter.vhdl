@@ -16,6 +16,7 @@ entity clk_filter is
 end entity clk_filter;
 
 architecture structural of clk_filter is
+
   component dff is
      port(
       clk : in std_logic;
@@ -32,8 +33,9 @@ architecture structural of clk_filter is
      );
   end component dl;
 
-signal Q0, Q1, Q2,Q3, Q4,D3, D4 : std_logic;
-
+signal Q0 : std_logic:='1';
+signal Q1, Q2, Q4,D3, D4 : std_logic :='1';
+signal Q3 : std_logic :='1';
 begin
   dff0 : dff port map(clk_in, Q3, '1', Q0);
   dff1 : dff port map(clk_in, Q4, Q0, Q1);
@@ -43,12 +45,9 @@ begin
 
   D3 <= S and D4;
   D4 <= trigger and Q2 and Q1 and Q0;
+  clk_out<= Q2 and clk_in after 1 ps;
 
-  with Q2 select clk_out <=
-    '0' when '0',
-    clk_in when others;
 end architecture structural;
-
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -62,17 +61,17 @@ entity dff is
    );
 end entity dff;
 architecture behavioral of dff is
+  signal qt : std_logic :='1';
 begin
-   process (clk) is
+   process (clk,R) is
    begin
-      if clk'event and clk = '1' then
-         if (R = '1') then
-            Q <= '0';
-         else
-            Q <= D;
-         end if;
+      if (R = '1') then
+        qt <= '0';
+      elsif clk'event and clk = '1' then
+          qt <= D;
       end if;
    end process;
+   Q<=qt;
 end architecture behavioral;
 
 library ieee;
@@ -86,11 +85,10 @@ entity dl is
    );
 end entity dl;
 architecture behavioral of dl is
+  signal t : std_logic := '0';
 begin
-   process (E) is
-   begin
-      if E='1' then
-        Q <= D;
-      end if;
-   end process;
+   with E select t<=
+    D when '1',
+    t when others;
+   Q<=t;
 end architecture behavioral;
